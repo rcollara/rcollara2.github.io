@@ -1,0 +1,155 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <title>Shop Now - Fashion Emporium</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+    <style>
+        /* Add your custom styles here */
+        .product {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin: 15px;
+            text-align: center;
+        }
+
+        .product img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .cart {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            background-color: #f8f8f8;
+            border-top: 1px solid #ddd;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+        }
+
+        .checkout-btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .cart-items {
+            display: flex;
+            align-items: center;
+        }
+
+        .cart-items img {
+            max-width: 50px;
+            max-height: 50px;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body class="is-preload">
+
+<!-- Wrapper -->
+<div id="wrapper">
+
+    <!-- Header -->
+    <header id="header">
+        <h1>Shop Now</h1>
+        <p>Explore our collections and shop the latest trends. Your next fashion statement is just a click away.</p>
+    </header>
+
+    <!-- Main -->
+    <div id="main">
+
+        <!-- Product 1 -->
+        <section id="product1" class="main">
+            <div class="product">
+                <img src="images/hotpick1.jpg" alt="Product 1">
+                <h2>Elegant Evening Dress</h2>
+                <p>Make a statement at any event with this exquisite evening dress. The intricate design and flowing silhouette will turn heads wherever you go.</p>
+                <p>$199.99</p>
+                <button class="add-to-cart" onclick="addToCart('Elegant Evening Dress', 199.99, 'product1.jpg')">Add to Cart</button>
+            </div>
+        </section>
+		<!-- Product 2 -->
+<section id="product2" class="main">
+    <div class="product">
+        <img src="images/favorite1.jpg" alt="Product 2">
+        <h2>Casual Denim Jacket</h2>
+        <p>Add a touch of style to your casual look with this trendy denim jacket. Perfect for a day out with friends or a weekend getaway.</p>
+        <p>$79.99</p>
+        <button class="add-to-cart" onclick="addToCart('Casual Denim Jacket', 79.99, 'product2.jpg')">Add to Cart</button>
+    </div>
+</section>
+
+<!-- Product 3 -->
+<section id="product3" class="main">
+    <div class="product">
+        <img src="images/leathershoe.jpg" alt="Product 3">
+        <h2>Classic Leather Shoes</h2>
+        <p>Step out in style with these classic leather shoes. Whether it's a formal occasion or a business meeting, these shoes will complement your outfit.</p>
+        <p>$129.99</p>
+        <button class="add-to-cart" onclick="addToCart('Classic Leather Shoes', 129.99, 'product3.jpg')">Add to Cart</button>
+    </div>
+</section>
+
+
+        <!-- Cart -->
+        <div class="cart" id="cart">
+            <div class="cart-items" id="cart-items">
+                <!-- Cart items will be displayed here -->
+            </div>
+            <button class="checkout-btn" onclick="checkout()">Checkout</button>
+        </div>
+
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.scrollex.min.js"></script>
+    <script src="assets/js/jquery.scrolly.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+
+    <script>
+        // JavaScript functions for handling cart and checkout
+        let cartItems = [];
+
+        function addToCart(productName, price, image) {
+            cartItems.push({ name: productName, price: price, image: image });
+            updateCart();
+        }
+
+        function updateCart() {
+            let cartItemsContainer = document.getElementById('cart-items');
+            cartItemsContainer.innerHTML = '';
+
+            cartItems.forEach(item => {
+                let cartItemDiv = document.createElement('div');
+                cartItemDiv.innerHTML = `
+                    <img src="images/${item.image}" alt="${item.name}">
+                    <p>${item.name} - $${item.price}</p>
+                `;
+                cartItemsContainer.appendChild(cartItemDiv);
+            });
+        }
+
+        function checkout() {
+            // Implement your checkout logic here
+            alert('Checkout functionality is not implemented in this example.');
+        }
+    </script>
+</body>
+</html>
